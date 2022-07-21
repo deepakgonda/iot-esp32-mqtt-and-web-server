@@ -1,6 +1,6 @@
 # Micropython Based Project for ESP32
 
-![New microWebSrv2](esp32-connection-breadboard.jpg "microWebSrv2")
+![ESP32 Board Connection](esp32-connection-breadboard.jpg "ESP32 Board Connection")
 
 ### Description of Project
 - This project enables ESP32 device to first create its own wifi access point names "ESP32-Server" with password set to "password".
@@ -26,6 +26,10 @@ Will soon upload pin diagram
 - Jumper Wires
 - Bread Board
 - Power Bank and Usb cable to power up
+
+
+### Web UI Example
+![Project Web UI Example](web-ui-screenshot.jpg "Web UI Landing Page")
 
 ### Future
 - In its current state this projects aims to interface with various environmental sensors to and publish data over local MQTT broker, which then can publish to AWS IOT etc.
