@@ -125,15 +125,10 @@ def RequestServerOperation(httpClient, httpResponse) :
         
 @MicroWebSrv.route('/promote-to-mqtt', 'GET')
 def RequestServerOperation(httpClient, httpResponse) :
-    print('Promoting to MQTT.., Checking neccessary requirements')
-    global ms2
-    success = False
-    from mqtt import connect_broker
-    client = connect_broker()
-    if client:
-        print('Started MQTT and stopped mws2 http server')
-        mode = {'server_mode': 'mqtt'}
-        fileopr.write_to_file(appconstants.SERVER_MODE_CONFIG_FILE_PATH, json.dumps(mode))
+    print('Promoting to MQTT.., Saving config')
+    mode = {'server_mode': 'mqtt'}
+    bytes = fileopr.write_to_file(appconstants.SERVER_MODE_CONFIG_FILE_PATH, json.dumps(mode))
+    if bytes:
         success = True
         httpResponse.WriteResponseJSONOk({
             'data': None,

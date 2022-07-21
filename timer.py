@@ -13,6 +13,7 @@ import appconstants
 server_mode = 'wifi'
 
 led = Pin(5, Pin.OUT)
+led.value(0)
 
 tim0 = Timer(0)
 tim1 = Timer(1)
@@ -44,10 +45,10 @@ def handle_callback(timer):
 
 
 def init_sensor_value_read():
-    global server_mode
+    global server_mode, tim1
     sm_config = fileopr.read_from_file(appconstants.SERVER_MODE_CONFIG_FILE_PATH)
     if sm_config:
         sm_config = json.loads(sm_config)
         server_mode = sm_config['server_mode']
         print("[timer]: Server Mode:", server_mode)
-    tim1.init(period=5000, mode=Timer.PERIODIC, callback= handle_callback)
+    tim1.init(period=30000, mode=Timer.PERIODIC, callback= handle_callback) # Every 30 seconds publish value

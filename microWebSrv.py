@@ -587,7 +587,7 @@ class MicroWebSrv :
         # ------------------------------------------------------------------------
 
         def _writeServerHeader(self) :
-            self._writeHeader("Server", "MicroWebSrv by JC`zic")
+            self._writeHeader("Server", "ESP32")
 
         # ------------------------------------------------------------------------
 
