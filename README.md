@@ -1,11 +1,28 @@
 # Micropython Based Project for ESP32
 
+![New microWebSrv2](esp32-connection-breadboard.jpg "microWebSrv2")
 
 ### Description of Project
 - This project enables ESP32 device to first create its own wifi access point names "ESP32-Server" with password set to "password".
 - Then user can open IP Address 192.168.4.1 which will present user with web page.
 - User can then set up his own Wifi Network credentials and MQTT credentials using web app.
-- Once the setup is complete user can restart the device which will bring it to MQTT mode and will then publish DHT22 sensor data to MQTT Broker. 
+- Once the setup is complete user can restart the device which will bring it to MQTT mode and will then publish DHT22 sensor data to MQTT Broker.
+- User can click on Push button 3 times within 5 seconds to reset Device. 
+
+Will soon upload pin diagram
+
+### Components Used:
+ESP32 Board Devkit v1
+DHT22 Temprature and Humidity Sensor
+Led
+Push Button
+2 K and 5k Ohm resistors
+Jumper Wires
+Bread Board
+Power Bank and Usb cable to power up
+
+### Future
+In its current state this projects aims to interface with various environmental sensors to and publish data over local MQTT broker, which that can publish to AWS IOT etc. Also this project can be modified to be used as a entry-point for creating a home automation device using MQTT Broker or Web App. 
 
 ### Credits
 [MicroWebSrv](https://github.com/jczic/MicroWebSrv) is used for serving web requests.
