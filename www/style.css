@@ -1,0 +1,178 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  body {
+	padding: 0;
+	margin: 0;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	background-color: #262527;
+	overflow:hidden;
+  }
+  
+  .container {
+	text-align: center;
+	color: #fff;
+  }
+  
+  .stepper-wrapper {
+	margin: 50px auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+  }
+  
+  .stepper-wrapper::before {
+	content: "";
+	width: 100%;
+	height: 3px;
+	background-color: lightgray;
+	position: absolute;
+	z-index: -2;
+  }
+  
+  .progress {
+	content: "";
+	width: 0%;
+	height: 3px;
+	background-color: rgb(78, 196, 243);
+	position: absolute;
+	z-index: -1;
+	transition: width 1s;
+  }
+  
+  .screen-indicator {
+	border-radius: 50%;
+	border: 3px solid lightgrey;
+	background-color: white;
+	padding: 10px 13px;
+	color: gray;
+	transition: border-color color;
+	transition-duration: 0.7s;
+  }
+  
+  .completed {
+	border-color: rgb(78, 196, 243);
+	color: rgb(78, 196, 243);
+  }
+  
+  .control-btn {
+	font-size: 30px;
+    cursor: pointer;
+	padding: 8px 14px;
+	margin: 20px 8px 0 0;
+	border: 1px solid gray;
+    border-radius: 5px;
+	border-width: 0px;
+	transition: 0.3s;
+	z-index: 1;
+  }
+  
+  .control-btn:disabled {
+	cursor: not-allowed;
+  }
+  
+  .control-btn:not(:disabled):hover {
+	background-color: lightgray;
+  }
+
+
+  input, textarea {
+	padding: 8px 10px;
+	margin: 3px 8px 16px 8px;
+	background-color: rgba(222, 239, 248, 0.877);
+	border: 0px transparent;
+	border-radius: 5px;
+	color:rgb(97, 4, 184);
+	font-size: 16px;
+	word-break: break-all; /* haven't found the best solution here yet, paragraphs are difficult to deal with */
+	hyphens: auto;
+	z-index: 1;
+	width: 95%;
+  }
+  
+  label {
+	margin: 0 8px;
+	font-size: 14px;
+	color: white;
+  }
+
+  .mb-5 {
+	margin-bottom: 5px;
+  }
+
+  .mb-10 {
+	margin-bottom: 10px;
+  }
+
+  .d-none {
+	display: none;
+  }
+
+  .form-nav-buttons{
+	margin-top: 20px;
+  }
+  
+  .notes {
+	text-align: left;
+	padding-left: 5px;
+  }
+
+  .loader-container {
+	z-index: 999;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(8 8 8 / 40%);
+    position: fixed;
+    top: 0;
+    padding-top: 20vh;
+	text-align: center;
+  }
+
+
+  #snackbar {
+	visibility: hidden;
+	min-width: 250px;
+	margin-left: -125px;
+	background-color:#d9d315eb;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	bottom: 30px;
+	font-size: 17px;
+  }
+  
+  #snackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  
+  @-webkit-keyframes fadein {
+	from {bottom: 0; opacity: 0;} 
+	to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+	from {bottom: 0; opacity: 0;}
+	to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+	from {bottom: 30px; opacity: 1;} 
+	to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+	from {bottom: 30px; opacity: 1;}
+	to {bottom: 0; opacity: 0;}
+  }

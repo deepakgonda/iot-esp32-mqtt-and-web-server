@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>ESP 32 Server</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- import stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+    <!--Start-->
+
+    <div class="loader-container" id="submit_loader">
+        <img src="loader.gif" alt="Loader">
+    </div>
+    <div class="container d-none" id="main-container">
+        <div style="text-align:center">
+            <h2 id="machine_id">Machine ID: XXXXXXXX</h2>
+            <h4 id="device_ip">Your IP: 192.168.4.1</h2>
+        </div>
+        <div class="stepper-wrapper">
+            <div class="progress"></div>
+            <div class="screen-indicator completed">Wifi</div>
+            <div class="screen-indicator">MQTT</div>
+            <div class="screen-indicator">Confirm</div>
+        </div>
+        <div class="forms">
+            <form id="wifiSetup" class="d-none">
+                <div class="mb-10">
+                    <label for="wifi_ssid" class="form-label">Wifi SSID</label>
+                    <input type="text" class="form-control" name="ssid" id="wifi_ssid">
+                </div>
+                <div class="mb-10">
+                    <label for="wifi_passwd" class="form-label">Wifi Password</label>
+                    <input type="text" class="form-control" name="passwd" id="wifi_passwd">
+                </div>
+            </form>
+            <form id="mqttSetup" class="d-none">
+                <div class="mb-10">
+                    <label for="mqtt_host" class="form-label">MQTT Server Id</label>
+                    <input type="text" class="form-control" name="host" id="mqtt_host">
+                </div>
+                <div class="mb-10">
+                    <label for="mqtt_port" class="form-label">MQTT Port</label>
+                    <input type="text" class="form-control" name="port" id="mqtt_port">
+                </div>
+                <div class="mb-10">
+                    <label for="mqtt_user" class="form-label">User</label>
+                    <input type="text" class="form-control" name="user" id="mqtt_user">
+                </div>
+                <div class="mb-10">
+                    <label for="mqtt_passwd" class="form-label">Password</label>
+                    <input type="text" class="form-control" name="passwd" id="mqtt_passwd">
+                </div>
+            </form>
+            <form id="confirmMqttPromote" class="d-none">
+                <h3>Wifi & Mqtt Configured Successfully!</h3>
+                <h3>Click on Submit button to promote this device to use MQTT Protocol and restart.</h3>
+                <div class="notes">
+                    <h3>Note:</h3>
+                    <ul>
+                        <li>After this operation web server will be disabled</li>
+                        <li>If all given information is correct then Device will connect to MQTT Broker using given wifi
+                            details.</li>
+                        <li>If Device is connected you will see sensor values of topic 'esp32/<span
+                                id="machine_id_holder2">MACHINE_ID</span>/sensor/vals'</li>
+                        <li>If due to any reason device is not able to connect to Wifi or MQTT, you can reset device
+                            using
+                            reset button.</li>
+                        <li>All further operations are supported only via MQTT</li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        <div class="form-nav-buttons">
+            <button class="control-btn" id="prev-btn" onclick="previous()">Back</button>
+            <button class="control-btn" id="next-btn" onclick="next()">Continue</button>
+            <button class="control-btn" id="submit-btn" onclick="submitForm()">Submit</button>
+        </div>
+    </div>
+    <div id="snackbar"></div>
+    <!--END -->
+
+    <script src="/app.js"></script>
+</body>
+
+</html>
