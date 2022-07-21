@@ -10,16 +10,22 @@
 - User can click on Push button 3 times within 5 seconds to reset Device. 
 
 Will soon upload pin diagram
+### Pin Connectivity
+- 3V3  ---->  Connected to Breadboard +ve
+- GND  ---->  Connected to Breadboard -ve
+- D5   ---->  Connected to Led (+ve) with 5k Ohm register
+- D18  ---->  Connected to DHT22 Sensor with 2K Ohm Pull up register
+- D19  ---->  Connected to Push Button (Used for Reset) with 2K Ohm Pull up register
 
 ### Components Used:
-ESP32 Board Devkit v1
-DHT22 Temprature and Humidity Sensor
-Led
-Push Button
-2 K and 5k Ohm resistors
-Jumper Wires
-Bread Board
-Power Bank and Usb cable to power up
+- ESP32 Board Devkit v1
+- DHT22 Temprature and Humidity Sensor
+- Led
+- Push Button
+- 2 K and 5k Ohm resistors
+- Jumper Wires
+- Bread Board
+- Power Bank and Usb cable to power up
 
 ### Future
 - In its current state this projects aims to interface with various environmental sensors to and publish data over local MQTT broker, which then can publish to AWS IOT etc.
