@@ -360,8 +360,8 @@ class MicroWebSrv :
                                                    'if-modified-since' in self._headers :
                                                     response.WriteResponseNotModified()
                                                 else:
-                                                    headers = { 'Last-Modified' : 'Fri, 1 Jan 2018 23:42:00 GMT', \
-                                                                'Cache-Control' : 'max-age=315360000' }
+                                                    headers = { 'Last-Modified' : 'Fri, 15 Jul 2022 23:42:00 GMT', \
+                                                                'Cache-Control' : 'max-age=300' }
                                                     response.WriteResponseFile(filepath, contentType, headers)
                                             else :
                                                 response.WriteResponseFile(filepath, contentType)
