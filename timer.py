@@ -39,8 +39,13 @@ def handle_callback(timer):
             print('Publishing Sensor Values...')
             msg = json.dumps(db.sensor_val)
             topic = 'esp32/'+ appconstants.MACHINE_ID +'/sensor/vals'
-            client.publish(bytes(topic, 'utf-8'), bytes(msg, 'utf-8'))
-            print('Published Sensor Values to MQTT Topic:', topic, 'Value:', msg)
+            try:
+                client.publish(bytes(topic, 'utf-8'), bytes(msg, 'utf-8'))
+                print('Published Sensor Values to MQTT Topic:', topic, 'Value:', msg)
+            except OSError as e:
+                print('Some error in publishing Values to MQTT Broker, Resetting connection, Error:', e)
+                mqtt.reset_connection()
+                
     led.value(0)
 
 

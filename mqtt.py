@@ -11,6 +11,7 @@ default_sub_topic = b'perform_work'
 
 conn_status = False
 connect_retry = 3
+retry_reset_counter = 0
 
 def sub_callback(topic, msg):
     print('MQTT Sub Incoming:',(topic, msg))
@@ -21,10 +22,11 @@ def sub_callback(topic, msg):
     
 
 def connect_broker():
-    global MQTT_CONFIG_FILE_PATH, MQTT_CLIENT, MACHINE_ID, conn_status, connect_retry
+    global MQTT_CONFIG_FILE_PATH, MQTT_CLIENT, MACHINE_ID, conn_status, connect_retry, retry_reset_counter
     print('Connect MQTT Broker..., MQTT_CLIENT:', MQTT_CLIENT)
     try:
-        if connect_retry <= 0:
+        if connect_retry <= 0 and retry_reset_counter < 10:
+            retry_reset_counter += 1
             print('MQTT Connect retries exhausted. Will not try anymore.')
             return None
         if conn_status and MQTT_CLIENT:
@@ -55,6 +57,12 @@ def subscribe_topic(topic):
     client = connect_broker()
     client.subscribe(topic)
     print('MQTT broker, Subscribed to %s topic' % (topic))
+
+def reset_connection():
+    global MQTT_CLIENT, conn_status, connect_retry
+    MQTT_CLIENT = None
+    conn_status = False
+    connect_retry = 3
 
 
 def start_mqtt_server():
